@@ -2,45 +2,45 @@ import fetch from 'cross-fetch'
 import urlJoin from 'url-join'
 
 export class HttpClient {
-  options: IHttpClientOptions
-  root: string
-  auth: object
+  public options: IHttpClientOptions
+  public root: string
+  public auth: object
 
   constructor(options: IHttpClientOptions) {
     this.options = options
-    this.auth = {Authorization: this.options.apiKey}
+    this.auth = { Authorization: this.options.apiKey }
 
     const root = this.options.endpoint || 'https://api.tipe.io'
     this.root = urlJoin(root, this.options.project)
   }
 
-  private fetch(options: IFetchOptions) {
+  private fetch(options: IFetchOptions): Promise<any> {
     const body = options.body || {}
-    const config = {
+    const config: RequestInit = {
       method: options.method,
       mode: 'cors',
-      headers: options.headers || {},
+      headers: (options.headers || {}) as Headers,
       body: JSON.stringify(body)
-    } as RequestInit
+    }
 
     return fetch(options.url, config)
-    .then(r => {
-      if (!r.ok) {
-        throw Error(r.statusText)
-      }
-      return r
-    })
-    .then(r => r.json())
-    .then(r => r.data)
+      .then(r => {
+        if (!r.ok) {
+          throw Error(r.statusText)
+        }
+        return r
+      })
+      .then(r => r.json())
+      .then(r => r.data)
   }
 
-  post(path: string, body: object) {
+  public post(path: string, body: object): Promise<any> {
     const fullPath = urlJoin(this.root, path)
     return this.fetch({
       body,
       url: fullPath,
-      headers: {...this.auth},
+      headers: { ...this.auth },
       method: 'POST'
     })
-  }  
+  }
 }

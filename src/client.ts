@@ -1,7 +1,7 @@
 import { HttpClient } from './http'
 export class TipeClient {
-  options: ITipeClientOptions
-  http: HttpClient
+  public options: ITipeClientOptions
+  public http: HttpClient
 
   constructor(options: ITipeClientOptions) {
     this.options = options
@@ -13,14 +13,14 @@ export class TipeClient {
     })
   }
 
-  pageById(id: string, status?: string) {
-    return this.http.post('/pageById', {id, status})
+  public pageById(id: string, status?: string): Promise<any> {
+    return this.http.post('/pageById', { id, status })
   }
 
-  pageByParams(page: string, params: object) {
-    return this.http.post('/pageByParams', {page, params})
+  public pageByParams(page: string, params: object): Promise<any> {
+    return this.http.post('/pageByParams', { page, params })
   }
-  pagesByType(page: string) {
-    return this.http.post('/pagesByType', {page})
+  public pagesByType(page: string): Promise<any> {
+    return this.http.post('/pagesByType', { page })
   }
 }
