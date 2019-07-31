@@ -18,7 +18,7 @@ script:
   - yarn ci
 after_success:
   - yarn build
-  # - yarn travis-deploy-once "npm run semantic-release"
+  - yarn travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
