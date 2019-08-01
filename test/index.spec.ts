@@ -79,6 +79,22 @@ describe('Tipe', () => {
     })
   })
 
+  describe('pages by template', () => {
+    test('calls api with correct args', async ()=> {
+      const options = {key: 'fakesecret', project: 'fakeproj'}
+      const pageConfig = {template: 'home'}
+      const tipe = new Tipe(options)
+      const expectedResults = { data: {} }
+      
+      tipe.api = jest.fn().mockResolvedValue(expectedResults)
+
+      const results = await tipe.getPagesByTemplate(pageConfig, options)
+
+      expect(tipe.api).toHaveBeenNthCalledWith(1, `POST`, `pagesByTemplate`, {template: 'home' } , options)
+      expect(results).toBe(expectedResults)
+    })
+  })
+
   describe('api', () => {
     test('formats the correct request', async () => {
       const expectedResult = {data: {}}

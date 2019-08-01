@@ -47,10 +47,13 @@ export interface IFetchConfig {
   page?: string
 }
 
+export interface IGetPagesByTemplate {
+  template: string
+}
+
 export type APIFetcher = (
   restMethod: string,
   path: string,
   contentConfig: IFetchConfig,
   fetchConfig?: ITipeClientOptions
 ) => Promise<{[key: string]: any}>
-

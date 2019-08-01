@@ -4,7 +4,8 @@ import {
   ITipeClientPageOptions,
   APIFetcher,
   IGetPageByTipeIdOptions,
-  IGetPageByIdOptions
+  IGetPageByIdOptions,
+  IGetPagesByTemplate
 } from './type'
 
 import stringify from 'fast-json-stable-stringify'
@@ -35,6 +36,10 @@ export default class Client {
 
   public getPageByTipeId = (pageConfig: IGetPageByTipeIdOptions,  options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
     return this.api('POST', 'pageByTipeId', pageConfig, options)
+  }
+
+  public getPagesByTemplate = (pageConfig: IGetPagesByTemplate, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
+    return this.api(`POST`, `pagesByTemplate`, pageConfig, options)
   }
 
   public api: APIFetcher = (restMethod = 'GET', path, contentConfig, fetchConfig) => {
