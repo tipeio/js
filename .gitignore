@@ -63,3 +63,7 @@ typings/
 /.build/
 /.nuxt/
 /.cache/
+
+# rollup
+.rpt2_cache
+dist
