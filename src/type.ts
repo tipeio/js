@@ -48,7 +48,8 @@ export interface IFetchConfig {
 }
 
 export interface IGetPagesByTemplate {
-  template: string
+  id: string,
+  status?: string
 }
 
 export type APIFetcher = (

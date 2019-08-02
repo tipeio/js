@@ -82,7 +82,7 @@ describe('Tipe', () => {
   describe('pages by template', () => {
     test('calls api with correct args', async ()=> {
       const options = {key: 'fakesecret', project: 'fakeproj'}
-      const pageConfig = {template: 'home'}
+      const pageConfig = {id: 'home', status: 'DRAFT'}
       const tipe = new Tipe(options)
       const expectedResults = { data: {} }
       
@@ -90,7 +90,7 @@ describe('Tipe', () => {
 
       const results = await tipe.getPagesByTemplate(pageConfig, options)
 
-      expect(tipe.api).toHaveBeenNthCalledWith(1, `POST`, `pagesByTemplate`, {template: 'home' } , options)
+      expect(tipe.api).toHaveBeenNthCalledWith(1, `POST`, `pagesByTemplate`, {id: 'home', status: 'DRAFT' } , options)
       expect(results).toBe(expectedResults)
     })
   })
