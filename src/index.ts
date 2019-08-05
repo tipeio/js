@@ -1,14 +1,15 @@
-import axios from 'axios'
+import fetch from 'cross-fetch'
 import {
   ITipeClientOptions,
   ITipeClientPageOptions,
   APIFetcher,
-  IGetPageByTipeIdOptions,
+  // IGetPageByTipeIdOptions,
   IGetPageByIdOptions,
-  IGetPagesByTemplate
+  IGetPagesByTemplate,
+  IGetPagesByProjectId
 } from './type'
 
-import stringify from 'fast-json-stable-stringify'
+// import stringify from 'fast-json-stable-stringify'
 
 export default class Client {
   public static createClient = createClient
@@ -18,29 +19,34 @@ export default class Client {
     this.config = config
   }
 
-  public getPagesByProjectId = (): Promise<{[key: string]: any}> => {
-    return this.api(`POST`, `pagesByProjectId`, { projectId: this.config.project })
-  }
+  public getPagesByProjectId = (pageConfig: IGetPagesByProjectId, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
+    const projectId = this.config.project
+    const { page, limit, status } = pageConfig
+    const payload = {
+      page,
+      limit,
+      status
+    }
+    console.log('TCL: Client -> payload', payload)
 
-  public getPagesByType = (pageConfig: ITipeClientPageOptions, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
-    return this.api(`POST`, `pagesByType`, {page: pageConfig.name, status: pageConfig.status}, options)
+    return this.api(`POST`, `pagesByProjectId`, { projectId: this.config.project, page: payload.page, limit: payload.limit, status: payload.status  })
   }
-
-  public getPagesByParams = (pageConfig: ITipeClientPageOptions, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
-    return this.api(`POST`, `pageByParams`, {page: pageConfig.name, routeParams: pageConfig.routeParams, status: pageConfig.status}, options)
-  }
-
+  
   public getPageById = (pageConfig: IGetPageByIdOptions, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
     return this.api('POST', 'pageById', pageConfig, options)
   }
 
-  public getPageByTipeId = (pageConfig: IGetPageByTipeIdOptions,  options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
-    return this.api('POST', 'pageByTipeId', pageConfig, options)
+  public getPageByParam = (pageConfig: ITipeClientPageOptions, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
+    return this.api(`POST`, `pageByParams`, {id: pageConfig.id, searchParam: pageConfig.searchParam, status: pageConfig.status}, options)
   }
 
   public getPagesByTemplate = (pageConfig: IGetPagesByTemplate, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
     return this.api(`POST`, `pagesByTemplate`, pageConfig, options)
   }
+
+  // public getPageByTipeId = (pageConfig: IGetPageByTipeIdOptions,  options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
+  //   return this.api('POST', 'pageByTipeId', pageConfig, options)
+  // }
 
   public api: APIFetcher = (restMethod = 'GET', path, contentConfig, fetchConfig) => {
     const config = {
@@ -56,18 +62,20 @@ export default class Client {
       Authorization: config.key
     }
 
-    const body = stringify(contentConfig)
-
     const options = {
       method: restMethod,
-      url: `${domain}${url}`,
       headers,
-      data: body,
+      body: JSON.stringify(contentConfig),
       cache: 'no-cache',
-      timeout: config.timeout || 5000
+      // timeout: config.timeout || 5000
     }
 
-    return axios(options)
+    return fetch(`${domain}${url}`, {
+      method: restMethod,
+      headers,
+      body: JSON.stringify(contentConfig),
+      cache: 'no-cache'
+    })
   }
 }
 

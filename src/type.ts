@@ -9,10 +9,7 @@ export interface IGetPageByIdOptions {
 
 export interface IGetPagesByParamsOptions {
   name: string
-  routeParams: {
-    k: string
-    v: string
-  }
+  searchParam: string
   status?: string
 }
 
@@ -21,12 +18,9 @@ export interface IGetPageByTipeIdOptions {
 }
 
 export interface ITipeClientPageOptions {
-  name: string
+  id: string
   status?: string,
-  routeParams?: {
-    k: string
-    v: string
-  }
+  searchParam?: string
 }
 
 
@@ -44,11 +38,17 @@ export interface ITipeParams {
 export interface IFetchConfig {
   [key: string]: any
   status?: string
-  page?: string
+  page?: number
 }
 
 export interface IGetPagesByTemplate {
-  id: string,
+  id: string
+  status?: string
+}
+
+export interface IGetPagesByProjectId {
+  limit?: number
+  page?: number
   status?: string
 }
 

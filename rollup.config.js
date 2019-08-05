@@ -5,7 +5,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import { main, browser, module, dependencies } from './package.json'
 import { terser } from 'rollup-plugin-terser'
 const whiteList = {
-  'axios': true
+  'cross-fetch': true
 }
 
 const plugins = [
