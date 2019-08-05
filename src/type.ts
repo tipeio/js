@@ -1,5 +1,11 @@
-export interface IGetPagesByTypeOptions {
-  name: string
+
+// export interface IGetPageByTipeIdOptions {
+  //   id: string
+  // }
+  
+export interface IGetPagesByProjectId {
+  page?: number
+  limit?: number
   status?: string
 }
 
@@ -7,22 +13,18 @@ export interface IGetPageByIdOptions {
   id: string
 }
 
-export interface IGetPagesByParamsOptions {
-  name: string
+export interface IGetPageByParam {
+  id: string
   searchParam: string
   status?: string
 }
 
-export interface IGetPageByTipeIdOptions {
+export interface IGetPagesByTemplate {
   id: string
+  page?: number
+  limit?: number
+  status?: string
 }
-
-export interface ITipeClientPageOptions {
-  id: string
-  status?: string,
-  searchParam?: string
-}
-
 
 export interface ITipeClientOptions {
   key: string
@@ -39,17 +41,7 @@ export interface IFetchConfig {
   [key: string]: any
   status?: string
   page?: number
-}
-
-export interface IGetPagesByTemplate {
-  id: string
-  status?: string
-}
-
-export interface IGetPagesByProjectId {
   limit?: number
-  page?: number
-  status?: string
 }
 
 export type APIFetcher = (
