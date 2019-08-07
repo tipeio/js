@@ -29,6 +29,10 @@ export default class Client {
 
     return this.api(`POST`, `pagesByProjectId`, { projectId: this.config.project, page: payload.page, limit: payload.limit, status: payload.status  })
   }
+
+  public getPagesByTemplate = (pageConfig: IGetPagesByTemplate, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
+    return this.api(`POST`, `pagesByTemplate`, pageConfig, options)
+  }
   
   public getPageById = (pageConfig: IGetPageByIdOptions, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
     return this.api('POST', 'pageById', pageConfig, options)
@@ -38,15 +42,7 @@ export default class Client {
     return this.api(`POST`, `pageByParam`, pageConfig, options)
   }
 
-  public getPagesByTemplate = (pageConfig: IGetPagesByTemplate, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
-    return this.api(`POST`, `pagesByTemplate`, pageConfig, options)
-  }
-
-  // public getPageByTipeId = (pageConfig: IGetPageByTipeIdOptions,  options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
-  //   return this.api('POST', 'pageByTipeId', pageConfig, options)
-  // }
-
-  public api: APIFetcher = (method = 'GET', path, contentConfig, fetchConfig) => {
+  public api: APIFetcher = async (method = 'GET', path, contentConfig, fetchConfig) => {
     const config = {
       ...this.config,
       ...fetchConfig
@@ -60,12 +56,23 @@ export default class Client {
       Authorization: config.key
     }
 
-    return fetch(`${domain}${url}`, {
-      method,
-      headers,
-      body: JSON.stringify(contentConfig),
-      cache: 'no-cache'
-    })
+    try {
+      const res = await fetch(`${domain}${url}`, {
+        method,
+        headers,
+        body: JSON.stringify(contentConfig),
+        cache: 'no-cache'
+      })
+      
+      if (res.status >= 400) {
+        throw new Error('Bad request')
+      }
+
+      return res.json()
+
+    } catch (err) {
+      console.error(err)
+    }
   }
 }
 
