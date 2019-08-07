@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/tipeio/js/compare/v1.2.0...v1.2.1) (2019-08-07)
+
+
+### Bug Fixes
+
+* **fetch:** Add try catch and res json ([44438c1](https://github.com/tipeio/js/commit/44438c1))
+
 # [1.2.0](https://github.com/tipeio/js/compare/v1.1.0...v1.2.0) (2019-08-06)
 
 
