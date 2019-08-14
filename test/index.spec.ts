@@ -75,7 +75,7 @@ describe('Tipe', () => {
       await tipe.api('GET', path, params, config)
       const body = stringify(params)
 
-      expect(fetch).toHaveBeenNthCalledWith(1, `https://api.tipe.io/api/${config.project}/${path}`, {
+      expect(fetch).toHaveBeenNthCalledWith(1, `https://beta-api.tipe.io/api/${config.project}/${path}`, {
         body,
         method: 'GET',
         headers: {

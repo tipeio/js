@@ -48,7 +48,7 @@ export default class Client {
       ...fetchConfig
     }
 
-    const domain = config.domain || 'https://api.tipe.io'
+    const domain = config.domain || 'https://beta-api.tipe.io'
     const url = `/api/${config.project}/${path}`
     const headers = {
       'Accept': 'application/json',
