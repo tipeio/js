@@ -5,8 +5,8 @@ import {
   APIFetcher,
   IGetPageByIdOptions,
   IGetPagesByTemplate,
-  IGetPagesByProjectId
-  // IGetPageByTipeIdOptions,
+  IGetPagesByProjectId,
+  IGetPageForPreview
 } from './type'
 
 // import stringify from 'fast-json-stable-stringify'
@@ -39,6 +39,10 @@ export default class Client {
   }
 
   public getPageByParam = (pageConfig: IGetPageByParam, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
+    return this.api(`POST`, `pageForPreview`, pageConfig, options)
+  }
+
+  public getPageForPreview = (pageConfig: IGetPageForPreview, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
     return this.api(`POST`, `pageByParam`, pageConfig, options)
   }
 

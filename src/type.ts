@@ -1,8 +1,3 @@
-
-// export interface IGetPageByTipeIdOptions {
-  //   id: string
-  // }
-  
 export interface IGetPagesByProjectId {
   page?: number
   limit?: number
@@ -17,6 +12,12 @@ export interface IGetPageByParam {
   id: string
   searchParam: string
   status?: string
+}
+
+export interface IGetPageForPreview {
+  id: string
+  searchParam?: string
+  template?: string
 }
 
 export interface IGetPagesByTemplate {
