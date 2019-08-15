@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/tipeio/js/compare/v1.2.2...v1.3.0) (2019-08-15)
+
+
+### Bug Fixes
+
+* **routes:** fixed api routes ([8e14a12](https://github.com/tipeio/js/commit/8e14a12))
+
+
+### Features
+
+* **preview:** pageForPreview ([a9f3921](https://github.com/tipeio/js/commit/a9f3921))
+
 ## [1.2.2](https://github.com/tipeio/js/compare/v1.2.1...v1.2.2) (2019-08-14)
 
 
