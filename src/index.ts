@@ -1,85 +1,73 @@
 import fetch from 'cross-fetch'
 import {
-  ITipeClientOptions,
-  IGetPageByParam,
-  APIFetcher,
-  IGetPageByIdOptions,
-  IGetPagesByTemplate,
-  IGetPagesByProjectId,
-  IGetPageForPreview
+  ITipeOptions,
+  TipeFetcher,
+  IDocumentListOptions,
+  IDocumentGetOptions
 } from './type'
 
-// import stringify from 'fast-json-stable-stringify'
-
-export default class Client {
-  public static createClient = createClient
-  public config: ITipeClientOptions
-
-  constructor(config: ITipeClientOptions) {
-    this.config = config
+const fetcher: TipeFetcher = async (method = 'POST', path, contentConfig, config) => {
+  const domain = config.domain || 'https://beta-api.tipe.io'
+  const url = `/api/${config.project}/${path}`
+  const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json; charset=utf-8',
+    Authorization: config.key
   }
 
-  public getPagesByProjectId = (pageConfig: IGetPagesByProjectId, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
-    const { page, limit, status } = pageConfig
-    const payload = {
-      page,
-      limit,
-      status
+  try {
+    const res = await fetch(`${domain}${url}`, {
+      method,
+      headers,
+      body: JSON.stringify(contentConfig),
+      cache: 'no-cache'
+    })
+    
+    if (res.status >= 400) {
+      throw new Error('Bad request')
     }
 
-    return this.api(`POST`, `pagesByProjectId`, { projectId: this.config.project, page: payload.page, limit: payload.limit, status: payload.status  })
+    const data = await res.json()
+    return data.data
+
+  } catch (err) {
+    console.error(err)
   }
+}
 
-  public getPagesByTemplate = (pageConfig: IGetPagesByTemplate, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
-    return this.api(`POST`, `pagesByTemplate`, pageConfig, options)
-  }
-  
-  public getPageById = (pageConfig: IGetPageByIdOptions, options?: ITipeClientOptions): Promise<{[key: string]: any}> => {
-    return this.api('POST', 'pageById', pageConfig, options)
-  }
-
-  public getPageByParam = (pageConfig: IGetPageByParam, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
-    return this.api(`POST`, `pageByParam`, pageConfig, options)
-  }
-
-  public getPageForPreview = (pageConfig: IGetPageForPreview, options?: ITipeClientOptions): Promise<{ [key: string]: any }> => {
-    return this.api(`POST`, `pageForPreview`, pageConfig, options)
-  }
-
-  public api: APIFetcher = async (method = 'GET', path, contentConfig, fetchConfig) => {
-    const config = {
-      ...this.config,
-      ...fetchConfig
-    }
-
-    const domain = config.domain || 'https://beta-api.tipe.io'
-    const url = `/api/${config.project}/${path}`
-    const headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json; charset=utf-8',
-      Authorization: config.key
-    }
-
-    try {
-      const res = await fetch(`${domain}${url}`, {
-        method,
-        headers,
-        body: JSON.stringify(contentConfig),
-        cache: 'no-cache'
-      })
+export default (config: ITipeOptions) => ({
+  document: {
+    list(options?: IDocumentListOptions) {
+      const o = options || {}
       
-      if (res.status >= 400) {
-        throw new Error('Bad request')
+      if (o.template) {
+        return fetcher('POST', 'documentsByTemplate', o, config)
       }
 
-      return res.json()
+      return fetcher('POST', 'documentsByProjectId', o, config)
+    },
+    get(options: IDocumentGetOptions) {
+      if (options.document) {
+        return fetcher('POST', 'documentById', {document: options.document}, config)
+      } else if (options.param) {
+        return fetcher('POST', 'documentByParam', {param: options.param}, config)
+      } else if (options.preview) {
+        return fetcher('POST', 'documentForPreview', {preview: options.preview}, config)
+      }
 
-    } catch (err) {
-      console.error(err)
+      throw new Error('Must supply a document id, preview id, or document param')
     }
+  },
+  post: {
+    list() {
+      return 'hello'
+    },
+    get() {
+      return 'hello'
+    }
+  },
+  status: {
+    draft: 'DRAFT',
+    published: 'PUBLISHED'
   }
-}
-
-export function createClient (config: ITipeClientOptions) {
-  return new Client(config)
-}
+})

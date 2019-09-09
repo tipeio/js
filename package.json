@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/tipeio/js/issues"
   },
-  "homepage": "https://github.com/tipeio/js#readme",
+  "homedocument": "https://github.com/tipeio/js#readme",
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.0.16",

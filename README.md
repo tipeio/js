@@ -1,40 +1,26 @@
 # @tipe/js
+
 Tipe client for JavaScript and Node.js
 
 ```js
 // esm
-import { createClient } from '@tipe/js'
+import Tipe from '@tipe/js'
+const tipe = Tipe({ key: 'api-key', project: 'project-id' })
 
 // cjs
-const { createClient } = require('@tipe/js')
+const tipe = require('@tipe/js')({ key: 'api-key', project: 'project-id' })
 
-const tipe = createClient({
-  project: 'projectId',
-  key: 'projectKey'
+tipe.document.list().then(results => {
+  console.log(results)
 })
 
-tipe.getPagesByProjectId({ page: 1, limit: 10, status: 'DRAFT' })
-.then(data => {
-  // data = []
-  console.log(data)
-})
+tipe.document
+  .list({ template: 'home', status: tipe.status.draft })
+  .then(results => {
+    console.log(results)
+  })
 
-tipe.getPagesByTemplate({ id: 'blog', page: 1, limit: 10, status: 'PUBLISHED' })
-.then(data => {
-  // data = []
-  console.log(data)
+tipe.document.get({ document: 'document-id' }).then(result => {
+  console.log(result)
 })
-
-tipe.getPageById({ id: 'abc123', status: 'PUBLISHED' })
-.then(data => {
-  // data = []
-  console.log(data)
-})
-
-tipe.getPageByParam({ searchParam: 'blog-1-get-tipe', id: 'blog', status: 'PUBLISHED' })
-.then(data => {
-  // data = []
-  console.log(data)
-})
-
 ```

@@ -8,7 +8,7 @@
 
 ### Features
 
-* **preview:** pageForPreview ([a9f3921](https://github.com/tipeio/js/commit/a9f3921))
+* **preview:** documentForPreview ([a9f3921](https://github.com/tipeio/js/commit/a9f3921))
 
 ## [1.2.2](https://github.com/tipeio/js/compare/v1.2.1...v1.2.2) (2019-08-14)
 
@@ -29,13 +29,13 @@
 
 ### Bug Fixes
 
-* **handler:** Fix pagesByTemplate method ([f426e9c](https://github.com/tipeio/js/commit/f426e9c))
+* **handler:** Fix documentsByTemplate method ([f426e9c](https://github.com/tipeio/js/commit/f426e9c))
 
 
 ### Features
 
 * **rollup:** Add rollup ([05a8ce0](https://github.com/tipeio/js/commit/05a8ce0))
-* **sdk:** Add pagesByTemplate method and tests ([e5bdb06](https://github.com/tipeio/js/commit/e5bdb06))
+* **sdk:** Add documentsByTemplate method and tests ([e5bdb06](https://github.com/tipeio/js/commit/e5bdb06))
 * **updates:** Update methods tests and types ([b7c6132](https://github.com/tipeio/js/commit/b7c6132))
 
 # [1.1.0](https://github.com/tipeio/js/compare/v1.0.0...v1.1.0) (2019-07-31)

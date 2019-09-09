@@ -1,53 +1,35 @@
-export interface IGetPagesByProjectId {
-  page?: number
+export interface IDocumentListOptions {
   limit?: number
   status?: string
-}
-
-export interface IGetPageByIdOptions {
-  id: string
-}
-
-export interface IGetPageByParam {
-  id: string
-  searchParam: string
-  status?: string
-}
-
-export interface IGetPageForPreview {
-  id: string
-  searchParam?: string
   template?: string
 }
 
-export interface IGetPagesByTemplate {
-  id: string
-  page?: number
-  limit?: number
-  status?: string
+export interface IDocumentGetOptions {
+  document?: string
+  param?: string
+  preview?: string
 }
 
-export interface ITipeClientOptions {
+export interface ITipeOptions {
   key: string
   project: string
   domain?: string
   timeout?: number
 }
 
-export interface ITipeParams {
-  [key: string]: string
-}
-
 export interface IFetchConfig {
   [key: string]: any
+  param?: string
+  preview?: string
   status?: string
-  page?: number
+  document?: string
   limit?: number
+  template?: string
 }
 
-export type APIFetcher = (
+export type TipeFetcher = (
   restMethod: string,
   path: string,
   contentConfig: IFetchConfig,
-  fetchConfig?: ITipeClientOptions
+  config: ITipeOptions
 ) => Promise<{[key: string]: any}>
