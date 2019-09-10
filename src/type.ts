@@ -8,6 +8,7 @@ export interface IDocumentGetOptions {
   document?: string
   param?: string
   preview?: string
+  template?: string
 }
 
 export interface ITipeOptions {

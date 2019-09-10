@@ -39,7 +39,7 @@ export default (config: ITipeOptions) => ({
   document: {
     list(options?: IDocumentListOptions) {
       const o = options || {}
-      
+
       if (o.template) {
         return fetcher('POST', 'documentsByTemplate', o, config)
       }
@@ -49,13 +49,13 @@ export default (config: ITipeOptions) => ({
     get(options: IDocumentGetOptions) {
       if (options.document) {
         return fetcher('POST', 'documentById', {document: options.document}, config)
-      } else if (options.param) {
+      } else if (options.param && options.template) {
         return fetcher('POST', 'documentByParam', {param: options.param}, config)
       } else if (options.preview) {
         return fetcher('POST', 'documentForPreview', {preview: options.preview}, config)
       }
 
-      throw new Error('Must supply a document id, preview id, or document param')
+      throw new Error('Must supply a document id, preview id, or document param and template id')
     }
   },
   post: {
