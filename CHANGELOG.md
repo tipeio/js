@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/tipeio/js/compare/v1.3.0...v2.0.0) (2019-09-10)
+
+
+### Bug Fixes
+
+* **client:** add correct options ([37c60d3](https://github.com/tipeio/js/commit/37c60d3))
+* **typo:** fix replace typos ([92d4702](https://github.com/tipeio/js/commit/92d4702))
+
+
+### Features
+
+* **client:** change client ([490f81e](https://github.com/tipeio/js/commit/490f81e))
+
+
+### BREAKING CHANGES
+
+* **client:** Tipe client is not a class anymore.
+* **client:** All methods on tipe client have been removed.
+
 # [1.3.0](https://github.com/tipeio/js/compare/v1.2.2...v1.3.0) (2019-08-15)
 
 
