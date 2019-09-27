@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/tipeio/js/compare/v2.0.0...v2.1.0) (2019-09-27)
+
+
+### Features
+
+* **config:** add offline api support ([de480fe](https://github.com/tipeio/js/commit/de480fe))
+
 # [2.0.0](https://github.com/tipeio/js/compare/v1.3.0...v2.0.0) (2019-09-10)
 
 
