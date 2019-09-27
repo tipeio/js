@@ -16,6 +16,8 @@ export interface ITipeOptions {
   project: string
   domain?: string
   timeout?: number
+  offline?: boolean
+  port?: number
 }
 
 export interface IFetchConfig {

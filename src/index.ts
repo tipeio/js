@@ -7,7 +7,13 @@ import {
 } from './type'
 
 const fetcher: TipeFetcher = async (method = 'POST', path, contentConfig, config) => {
-  const domain = config.domain || 'https://beta-api.tipe.io'
+  let domain = config.domain || 'https://beta-api.tipe.io'
+
+  if (config.offline) {
+    const port = config.port || 8300
+    domain = `http://localhost:${port}`
+  }
+  
   const url = `/api/${config.project}/${path}`
   const headers = {
     'Accept': 'application/json',
