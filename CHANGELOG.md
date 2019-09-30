@@ -1,3 +1,11 @@
+## [2.1.1](https://github.com/tipeio/js/compare/v2.1.0...v2.1.1) (2019-09-30)
+
+
+### Bug Fixes
+
+* **document:** Update document get to expect an id instead of document on the request and options ([9814937](https://github.com/tipeio/js/commit/9814937))
+* **param:** Remove document by param ([e0cab6d](https://github.com/tipeio/js/commit/e0cab6d))
+
 # [2.1.0](https://github.com/tipeio/js/compare/v2.0.0...v2.1.0) (2019-09-27)
 
 
