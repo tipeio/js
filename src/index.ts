@@ -55,8 +55,6 @@ export default (config: ITipeOptions) => ({
     get(options: IDocumentGetOptions) {
       if (options.id) {
         return fetcher('POST', 'documentById', {id: options.id}, config)
-      } else if (options.param && options.template) {
-        return fetcher('POST', 'documentByParam', {param: options.param}, config)
       } else if (options.preview) {
         return fetcher('POST', 'documentForPreview', {preview: options.preview}, config)
       }
