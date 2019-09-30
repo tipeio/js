@@ -5,7 +5,7 @@ export interface IDocumentListOptions {
 }
 
 export interface IDocumentGetOptions {
-  document?: string
+  id?: string
   param?: string
   preview?: string
   template?: string
