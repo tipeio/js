@@ -53,8 +53,8 @@ export default (config: ITipeOptions) => ({
       return fetcher('POST', 'documentsByProjectId', o, config)
     },
     get(options: IDocumentGetOptions) {
-      if (options.document) {
-        return fetcher('POST', 'documentById', {document: options.document}, config)
+      if (options.id) {
+        return fetcher('POST', 'documentById', {id: options.id}, config)
       } else if (options.param && options.template) {
         return fetcher('POST', 'documentByParam', {param: options.param}, config)
       } else if (options.preview) {
