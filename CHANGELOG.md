@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/tipeio/js/compare/v2.1.1...v2.2.0) (2019-10-15)
+
+
+### Features
+
+* **docs:** mutation ([77e30a4](https://github.com/tipeio/js/commit/77e30a4))
+
 ## [2.1.1](https://github.com/tipeio/js/compare/v2.1.0...v2.1.1) (2019-09-30)
 
 
