@@ -3,7 +3,9 @@ import {
   ITipeOptions,
   TipeFetcher,
   IDocumentListOptions,
-  IDocumentGetOptions
+  IDocumentGetOptions,
+  IDocumentUpdateOptions,
+  IDocumentCreateOptions
 } from './type'
 
 const fetcher: TipeFetcher = async (method = 'POST', path, contentConfig, config) => {
@@ -60,6 +62,12 @@ export default (config: ITipeOptions) => ({
       }
 
       throw new Error('Must supply a document id, preview id, or document param and template id')
+    },
+    update(options: IDocumentUpdateOptions) {
+      return fetcher('PUT', 'updateDocument', options, config)
+    },
+    create(options: IDocumentCreateOptions) {
+      return fetcher('POST', 'createDocument', options, config)
     }
   },
   post: {

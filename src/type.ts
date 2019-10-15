@@ -11,6 +11,19 @@ export interface IDocumentGetOptions {
   template?: string
 }
 
+export interface IDocumentCreateOptions {
+  name: string
+  template: string
+  fields?: object
+  refs?: object
+}
+
+export interface IDocumentUpdateOptions {
+  name: string
+  fields?: object
+  refs?: object
+}
+
 export interface ITipeOptions {
   key: string
   project: string
