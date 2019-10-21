@@ -1,7 +1,7 @@
 {
   "name": "@tipe/js",
   "description": "JS API client for Tipe",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "main": "dist/cjs/index.js",
   "module": "dist/umd/index.js",
   "browser": "dist/esm/index.js",

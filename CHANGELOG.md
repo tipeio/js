@@ -1,3 +1,15 @@
+# [2.3.0](https://github.com/tipeio/js/compare/v2.2.0...v2.3.0) (2019-10-21)
+
+
+### Bug Fixes
+
+* **fetcher:** send all data with request ([8da67b5](https://github.com/tipeio/js/commit/8da67b5))
+
+
+### Features
+
+* **post:** Post ([6cc5302](https://github.com/tipeio/js/commit/6cc5302))
+
 # [2.2.0](https://github.com/tipeio/js/compare/v2.1.1...v2.2.0) (2019-10-15)
 
 
