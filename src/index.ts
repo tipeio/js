@@ -17,7 +17,7 @@ const fetcher: TipeFetcher = async (method = 'POST', path, contentConfig, config
     const port = config.port || 8300
     domain = `http://localhost:${port}`
   }
-  
+
   const url = `/api/${config.project}/${path}`
   const headers = {
     'Accept': 'application/json',
@@ -32,7 +32,7 @@ const fetcher: TipeFetcher = async (method = 'POST', path, contentConfig, config
       body: JSON.stringify(contentConfig),
       cache: 'no-cache'
     })
-    
+
     if (res.status >= 400) {
       throw new Error('Bad request')
     }
@@ -59,6 +59,11 @@ export default (config: ITipeOptions) => ({
     get(options: IDocumentGetOptions) {
       if (options.id) {
         return fetcher('POST', 'documentById', options, config)
+      } else if (options.ids) {
+        const documents = options.ids.map(docId => {
+          return fetcher('POST', 'documentById', { id: docId }, config)
+        })
+        return Promise.all(documents)
       } else if (options.preview) {
         return fetcher('POST', 'documentForPreview', options, config)
       }

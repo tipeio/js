@@ -19,6 +19,7 @@ export interface IPostGetOptions {
 
 export interface IDocumentGetOptions {
   id?: string
+  ids?: string[]
   param?: string
   preview?: string
   template?: string
