@@ -1,7 +1,19 @@
 export interface IDocumentListOptions {
+  page?: number
   limit?: number
   status?: string
   template?: string
+}
+
+export interface IPostListOptions {
+  page?: number
+  limit?: number
+  status?: string
+}
+
+export interface IPostGetOptions {
+  id?: string
+  preview?: string
 }
 
 export interface IDocumentGetOptions {

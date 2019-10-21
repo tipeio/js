@@ -4,6 +4,8 @@ import {
   TipeFetcher,
   IDocumentListOptions,
   IDocumentGetOptions,
+  IPostListOptions,
+  IPostGetOptions,
   IDocumentUpdateOptions,
   IDocumentCreateOptions
 } from './type'
@@ -71,11 +73,18 @@ export default (config: ITipeOptions) => ({
     }
   },
   post: {
-    list() {
-      return 'hello'
+    list(options?: IPostListOptions) {
+      const o = options || {}
+      return fetcher('POST', 'postsByProjectId', o, config)
     },
-    get() {
-      return 'hello'
+    get(options?: IPostGetOptions) {
+      const o = options || {}
+      if (o.preview) {
+        return fetcher('POST', 'postForPreview', o, config)
+      } else if (o.id) {
+        return fetcher('POST', 'postById', o, config)
+      }
+      throw new Error('Must supply a post id or preview id')
     }
   },
   status: {
