@@ -14,6 +14,7 @@ export interface IPostListOptions {
 export interface IPostGetOptions {
   id?: string
   preview?: string
+  status?: string
 }
 
 export interface IDocumentGetOptions {
@@ -21,6 +22,7 @@ export interface IDocumentGetOptions {
   param?: string
   preview?: string
   template?: string
+  status?: string
 }
 
 export interface IDocumentCreateOptions {

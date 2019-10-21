@@ -58,9 +58,9 @@ export default (config: ITipeOptions) => ({
     },
     get(options: IDocumentGetOptions) {
       if (options.id) {
-        return fetcher('POST', 'documentById', {id: options.id}, config)
+        return fetcher('POST', 'documentById', options, config)
       } else if (options.preview) {
-        return fetcher('POST', 'documentForPreview', {preview: options.preview}, config)
+        return fetcher('POST', 'documentForPreview', options, config)
       }
 
       throw new Error('Must supply a document id, preview id, or document param and template id')
