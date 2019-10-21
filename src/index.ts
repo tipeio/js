@@ -11,7 +11,7 @@ import {
 } from './type'
 
 const fetcher: TipeFetcher = async (method = 'POST', path, contentConfig, config) => {
-  let domain = config.domain || 'https://beta-api.tipe.io'
+  let domain = config.domain || 'https://api.tipe.io'
 
   if (config.offline) {
     const port = config.port || 8300
