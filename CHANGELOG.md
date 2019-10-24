@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/tipeio/js/compare/v2.3.1...v2.3.2) (2019-10-24)
+
+
+### Bug Fixes
+
+* **exports:** Fix for cjs export output ([e2eb3ce](https://github.com/tipeio/js/commit/e2eb3ce))
+
 ## [2.3.1](https://github.com/tipeio/js/compare/v2.3.0...v2.3.1) (2019-10-21)
 
 
