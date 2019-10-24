@@ -2,6 +2,7 @@ import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
+import builtins from 'rollup-plugin-node-builtins'
 import { main, browser, module, dependencies } from './package.json'
 import { terser } from 'rollup-plugin-terser'
 const whiteList = {
@@ -9,6 +10,7 @@ const whiteList = {
 }
 
 const plugins = [
+  builtins(),
   resolve({
     customResolveOptions: {
       moduleDirectory: 'node_modules'
@@ -45,8 +47,7 @@ export default [
       },
       {
         file: main,
-        format: 'cjs',
-        exports: 'named'
+        format: 'cjs'
       }
     ],
     external: [

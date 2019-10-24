@@ -1,6 +1,4 @@
 import Tipe from '../src'
-// import stringify from 'fast-json-stable-stringify'
-// import fetch from 'cross-fetch'
 jest.mock('cross-fetch');
 
 describe('Tipe', () => {
