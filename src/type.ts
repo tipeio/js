@@ -35,6 +35,7 @@ export interface IDocumentCreateOptions {
 
 export interface IDocumentUpdateOptions {
   name: string
+  sku?: string
   fields?: object
   refs?: object
 }
