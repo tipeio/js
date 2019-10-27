@@ -19,8 +19,7 @@ export interface IPostGetOptions {
 
 export interface IDocumentGetOptions {
   id?: string
-  ids?: string[]
-  param?: string
+  skuId?: string
   preview?: string
   template?: string
   status?: string
@@ -29,6 +28,7 @@ export interface IDocumentGetOptions {
 export interface IDocumentCreateOptions {
   name: string
   template: string
+  skuId?: string
   fields?: object
   refs?: object
 }
