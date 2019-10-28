@@ -60,10 +60,7 @@ export default (config: ITipeOptions) => ({
       if (options.id) {
         return fetcher('POST', 'documentById', options, config)
       } else if (options.ids) {
-        const documents = options.ids.map(docId => {
-          return fetcher('POST', 'documentById', { id: docId }, config)
-        })
-        return Promise.all(documents)
+        return fetcher('POST', 'documentsByIds', options, config)
       } else if (options.preview) {
         return fetcher('POST', 'documentForPreview', options, config)
       }
