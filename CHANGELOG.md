@@ -1,3 +1,11 @@
+# [2.4.0](https://github.com/tipeio/js/compare/v2.3.2...v2.4.0) (2019-10-29)
+
+
+### Features
+
+* **documents:** Add documents by array of ids ([3b596d4](https://github.com/tipeio/js/commit/3b596d4))
+* **documents:** Add documents by ids ([55de674](https://github.com/tipeio/js/commit/55de674))
+
 ## [2.3.2](https://github.com/tipeio/js/compare/v2.3.1...v2.3.2) (2019-10-24)
 
 
