@@ -3,6 +3,7 @@ export interface IDocumentListOptions {
   limit?: number
   status?: string
   template?: string
+  skuIds?: string[]
 }
 
 export interface IPostListOptions {
@@ -22,6 +23,7 @@ export interface IDocumentGetOptions {
   ids?: string[]
   param?: string
   preview?: string
+  skuId?: string
   template?: string
   status?: string
 }

@@ -61,6 +61,8 @@ export default (config: ITipeOptions) => ({
         return fetcher('POST', 'documentById', options, config)
       } else if (options.ids) {
         return fetcher('POST', 'documentsByIds', options, config)
+      } else if (options.skuId) {
+        return fetcher('POST', 'documentBySkuId', options, config)
       } else if (options.preview) {
         return fetcher('POST', 'documentForPreview', options, config)
       }
