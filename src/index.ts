@@ -63,8 +63,8 @@ export default (config: ITipeOptions) => ({
         return fetcher('POST', 'documentsByIds', options, config)
       } else if (options.preview) {
         return fetcher('POST', 'documentForPreview', options, config)
-      } else if (options.sku) {
-        return fetcher('POST', 'documentBySku', options, config)
+      } else if (options.skuId) {
+        return fetcher('POST', 'documentBySkuId', options, config)
       }
 
       throw new Error('Must supply a document id, preview id, or document sku')

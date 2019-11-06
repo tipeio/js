@@ -9,6 +9,7 @@ export interface IPostListOptions {
   page?: number
   limit?: number
   status?: string
+  skuIds?: [string]
 }
 
 export interface IPostGetOptions {
@@ -35,7 +36,7 @@ export interface IDocumentCreateOptions {
 
 export interface IDocumentUpdateOptions {
   name: string
-  sku?: string
+  skuId?: string
   fields?: object
   refs?: object
 }
