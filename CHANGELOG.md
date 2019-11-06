@@ -1,3 +1,17 @@
+# [2.5.0](https://github.com/tipeio/js/compare/v2.4.0...v2.5.0) (2019-11-06)
+
+
+### Bug Fixes
+
+* **doc:** fixed options and routes to match dev api and CLI ([1770099](https://github.com/tipeio/js/commit/1770099))
+* **doc:** types ([0c3361c](https://github.com/tipeio/js/commit/0c3361c))
+* **types:** fixed merge conflict ([84615ad](https://github.com/tipeio/js/commit/84615ad))
+
+
+### Features
+
+* **doc:** create and update doc sku ([fae0726](https://github.com/tipeio/js/commit/fae0726))
+
 # [2.4.0](https://github.com/tipeio/js/compare/v2.3.2...v2.4.0) (2019-10-29)
 
 
