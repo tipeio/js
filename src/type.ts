@@ -20,6 +20,7 @@ export interface IPostGetOptions {
 
 export interface IDocumentGetOptions {
   id?: string
+  ids?: [string]
   skuId?: string
   preview?: string
   template?: string
